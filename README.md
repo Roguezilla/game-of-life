@@ -1,5 +1,6 @@
 # Conway's Game of Life
 Written just for fun while I was at school and bored.  
+Press SPACE to pause the game.
 
 >The game comes with a Gosper's glider gun in the array.txt, this array can be expanded as much as you want.
 > ![Gosper's glider gun](https://i.imgur.com/ZJ4yc1L.png)
