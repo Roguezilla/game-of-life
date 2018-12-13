@@ -6,12 +6,6 @@ import sys
 
 gen = 0
 
-clear = ''
-if platform.system() == 'Windows':
-	clear = 'cls'
-else:
-	clear = 'clear'
-
 cells = []
 try:
 	with open(input('Filename: ')) as textFile:
@@ -37,7 +31,7 @@ def alive(x,y):
 		except IndexError: None
 	return num_of_neighbours
 
-system(clear)
+system('cls' if platform.system() == 'Windows' else 'clear')
 print('__'*len(cells[0]))
 for i in range(len(cells)):
 	print(*cells[i], end='')
@@ -63,7 +57,7 @@ while True:
 
 	cells = dc_cells
 
-	system(clear)
+	system('cls' if platform.system() == 'Windows' else 'clear')
 	print('__'*len(cells[0]))
 	for i in range(len(cells)):
 		print(*cells[i], end='')
