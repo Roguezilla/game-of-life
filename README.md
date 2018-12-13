@@ -1,6 +1,8 @@
 # Conway's Game of Life
 Written just for fun while I was at school and bored.  
-Don't mind the big cell, you can remove if you want it's just a quality of life thing for me.
+
+>The game comes with a Gosper's glider gun in the array.txt  
+> ![Gosper's glider gun](https://i.imgur.com/ZJ4yc1L.png)
 
 > Gosper's glider gun on gen 0  
 > ![Gosper's glider gun](https://i.imgur.com/EYWtaqS.png)
