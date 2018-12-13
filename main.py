@@ -1,7 +1,15 @@
 from os import system
 from copy import deepcopy
+import platform
+import keyboard
 
 gen = 0
+
+clear = ''
+if platform.system() == 'Windows':
+	clear = 'cls'
+else:
+	clear = 'clear'
 
 with open("array.txt") as textFile:
 	cells = [line.split() for line in textFile]
@@ -22,7 +30,7 @@ def alive(x,y):
 		except IndexError: None
 	return num_of_neighbours
 
-system('cls')
+system(clear)
 print('__'*len(cells[0]))
 for i in range(len(cells)):
 	print(*cells[i], end='')
@@ -48,7 +56,7 @@ while True:
 
 	cells = dc_cells
 
-	system('cls')
+	system(clear)
 	print('__'*len(cells[0]))
 	for i in range(len(cells)):
 		print(*cells[i], end='')
@@ -57,3 +65,5 @@ while True:
 	
 	gen += 1
 	print('Generation: {}'.format(gen))
+	if keyboard.is_pressed('space'):
+		system('pause')
