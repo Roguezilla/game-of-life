@@ -1,7 +1,7 @@
 # Conway's Game of Life
 Written just for fun while I was at school and bored.  
 
->The game comes with a Gosper's glider gun in the array.txt  
+>The game comes with a Gosper's glider gun in the array.txt, this array can be expanded as much as you want.
 > ![Gosper's glider gun](https://i.imgur.com/ZJ4yc1L.png)
 
 > Gosper's glider gun on gen 0  
