@@ -16,9 +16,9 @@ except FileNotFoundError:
 
 for x in range(len(cells)):
 	for y in range(len(cells[0])):
-		if cells[x][y] == '_':
+		if cells[x][y] == '.':
 			cells[x][y] = ' '
-		elif cells[x][y] == '1':
+		elif cells[x][y] == 'o':
 			cells[x][y] = '■'
 
 def alive(x,y):
