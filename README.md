@@ -10,3 +10,6 @@ Press SPACE to pause the game.
 
 > Gosper's glider gun after some generations  
 > ![Gosper's glider gun](https://i.imgur.com/kw4iAQA.png)
+
+> Gosper's glider gun after some generations with opengof.py
+> ![Gosper's glider gun](https://i.imgur.com/1QV0deT.png)
