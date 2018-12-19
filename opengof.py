@@ -7,7 +7,7 @@ from copy import deepcopy
 
 cells = []
 try:
-	with open(input('Filename: ')) as txt:
+	with open('array.txt') as txt:
 		cells = [line.split() for line in txt]
 		for x in range(len(cells)):
 			for y in range(len(cells[0])):
@@ -36,28 +36,6 @@ def string(x, y, text, color=(1.0, 1.0, 1.0)):
 	for ch in text:
 		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, ctypes.c_int(ord(ch)))
 
-def outline_rect(x, y, mult, add, color=(0.0, 0.0, 0.0)):
-	glPushAttrib(GL_CURRENT_BIT)
-	glBegin(GL_LINE_LOOP)
-	glColor3f(color[0], color[1], color[2])
-	glVertex2f(x*mult, y*mult)
-	glVertex2f(x*mult, y*mult+10)
-	glVertex2f(x*mult+add, y*mult+add)
-	glVertex2f(x*mult+add, y*mult)
-	glEnd()
-	glPopAttrib()
-
-def rect(x, y, mult, add, color=(1.0, 1.0, 1.0)):
-	glPushAttrib(GL_CURRENT_BIT)
-	glBegin(GL_QUADS)
-	glColor3f(color[0], color[1], color[2])
-	glVertex2f(x*mult, y*mult)
-	glVertex2f(x*mult, y*mult+10)
-	glVertex2f(x*mult+add, y*mult+add)
-	glVertex2f(x*mult+add, y*mult)
-	glEnd()
-	glPopAttrib()
-
 gen = 0
 def update(dt):
 	global cells, gen
@@ -81,7 +59,7 @@ window = pyglet.window.Window(width=len(cells[0])*10, height=len(cells)*10+10, c
 @window.event
 def on_draw():
 	global cells, gen
-	pyglet.clock.schedule_once(update, .00001)
+	pyglet.clock.schedule_once(update, 1/10000)
 	glClear(GL_COLOR_BUFFER_BIT)
 	glLoadIdentity()
 	string(0, 0, 'Generation: {}'.format(gen))
@@ -90,10 +68,11 @@ def on_draw():
 	for x in range(len(cells)):
 		for y in range(len(cells[0])):
 			if cells[x][y] == ' ':
-				outline_rect(x, y, 10, 10, color=(0.0, 0.0, 0.0))
-				rect(x, y, 10, 10, color=(1.0, 1.0, 1.0))
-			elif cells[x][y] == '■':
-				outline_rect(x, y, 10, 10, color=(0.0, 0.0, 0.0))
-				rect(x, y, 10, 10, color=(0.0, 1.0, 0.0))
+				glBegin(GL_QUADS)
+				glVertex2f(x*10, y*10)
+				glVertex2f(x*10, y*10+10)
+				glVertex2f(x*10+10, y*10+10)
+				glVertex2f(x*10+10, y*10)
+				glEnd()
 	
 pyglet.app.run()
