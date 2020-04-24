@@ -14,21 +14,13 @@ except FileNotFoundError:
 	print('No such file in directory.')
 	sys.exit(0)
 
-for x in range(len(cells)):
-	for y in range(len(cells[0])):
-		if cells[x][y] == '.':
-			cells[x][y] = ' '
-		elif cells[x][y] == 'o':
-			cells[x][y] = '■'
-
 def alive(x,y):
 	num_of_neighbours = 0
 	neighbours = ((1,0),(-1,0),(0,1),(0,-1),(1,1),(-1,-1),(1,-1),(-1,1))
 	for xx,yy in neighbours:
-		try:
-			if cells[x+xx][y+yy] == '■' and x+xx in range(len(cells)) and y+yy in range(len(cells[0])):
+		if x+xx >= 0 and x+xx < len(cells) and y+yy > 0 and y+yy < len(cells[0]) - 1:
+			if cells[x+xx][y+yy] == '@':
 				num_of_neighbours += 1
-		except IndexError: None
 	return num_of_neighbours
 
 system('cls' if platform.system() == 'Windows' else 'clear')
@@ -45,15 +37,15 @@ while True:
 	for x in range(len(dc_cells)):
 		for y in range(len(dc_cells[0])):
 			live = alive(x,y)
-			if dc_cells[x][y] == '■' and live < 2:
-				dc_cells[x][y] = ' '
-			elif dc_cells[x][y] == '■' and (live == 2 or live == 3):
-				dc_cells[x][y] = '■'
-			elif dc_cells[x][y] == '■' and live > 3:
-				dc_cells[x][y] = ' '
+			if dc_cells[x][y] == '@' and live < 2:
+				dc_cells[x][y] = '.'
+			elif dc_cells[x][y] == '@' and (live == 2 or live == 3):
+				dc_cells[x][y] = '@'
+			elif dc_cells[x][y] == '@' and live > 3:
+				dc_cells[x][y] = '.'
 
-			if dc_cells[x][y] == ' ' and live == 3:
-				dc_cells[x][y] = '■'
+			if dc_cells[x][y] == '.' and live == 3:
+				dc_cells[x][y] = '@'
 
 	cells = dc_cells
 
